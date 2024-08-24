@@ -16,12 +16,21 @@ require_once 'redis_db.php';
     }
 ?>
 <?php
-session_start();
+    session_start();
+    if(isset($_SESSION['expiretime'])) {
+        if($_SESSION['expiretime'] < time()) {
+            unset($_SESSION['expiretime']);
+            $_SESSION = array();
 
-// Redis will automatically expire the session with the TTL
-if (!isset($_SESSION['initialized'])) {
-    $_SESSION['initialized'] = true;
-    // Set a TTL for the session (1800 seconds = 30 minutes
-    $redis->expire('PHPREDIS_SESSION:' . session_id(), 1800);
-}
+            // Destroy the session
+            session_destroy();
+            header('Location: index.php'); // 登出
+            //echo retJson(401,'請重新登錄!','');
+            exit(0);
+        } else {
+            $_SESSION['expiretime'] = time() + 1800; // 刷新時間
+        }
+    }else{
+        $_SESSION['expiretime'] = time() + 1800; // 5小时后过期
+    }
 ?>
