@@ -1,5 +1,6 @@
 <?php
     require_once('../db.php'); // 引入資料庫連線
+    require_once '../redis_db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

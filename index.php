@@ -1,6 +1,7 @@
 <?php
 require_once 'db.php';
 //session_start();
+require_once 'redis_db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
