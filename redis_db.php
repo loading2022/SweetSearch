@@ -1,23 +1,20 @@
 <?php
 // Ensure no output is sent before these calls
 ini_set('session.save_handler', 'redis');
-ini_set('session.save_path', "tcp://{$_ENV['REDIS_HOST']}:{$_ENV['REDIS_PORT']}");
+
+// Construct the Redis URL
+$redis_url = "tcp://{$_ENV['REDIS_HOST']}:{$_ENV['REDIS_PORT']}";
+
+// If you have a password, include it in the save path
+if (!empty($_ENV['REDIS_PASSWORD'])) {
+    $redis_url = "tcp://:{$_ENV['REDIS_PASSWORD']}@{$_ENV['REDIS_HOST']}:{$_ENV['REDIS_PORT']}";
+}
+
+ini_set('session.save_path', $redis_url);
 
 session_start();
 
-try {
-    // Initialize Redis connection
-    $redis = new Redis();
-    $redis->connect($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);
-    
-    // Set a session key expiration as an example
-    $redis->expire(session_id(), 3600); // 3600 seconds = 1 hour
-
-    // Your application code here
-    $_SESSION['username'] = 'John Doe';
-    echo $_SESSION['username'];
-} catch (Exception $e) {
-    // Handle Redis connection errors
-    echo "Could not connect to Redis: " . $e->getMessage();
-}
+// Example session usage
+$_SESSION['username'] = 'John Doe';
+echo $_SESSION['username'];
 ?>
