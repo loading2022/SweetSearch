@@ -67,8 +67,10 @@
             if ($result->num_rows <= 0) {
                 $putin = "INSERT INTO user (user_ID,user_NickName,user_Email, user_Password) VALUES ('$newUserId','$nickname','$email', '$password')";
                 if ($conn->query($putin) == TRUE) {
-                    echo "<script>alert('Sign up successful!');</script>";
-                    header("Location: login.php");
+                    echo "<script>
+                        alert('Sign up successful!');
+                        window.location.href = 'login.php';
+                    </script>";
                     exit();
                 } else {
                     echo "<script>alert('Error: " . $putin . "<br>" . $conn->error . "');</script>";

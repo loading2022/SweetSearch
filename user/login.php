@@ -62,9 +62,10 @@
                 $_SESSION['nowUser'] = $nowUser;
                 echo '<script>alert("登入成功");</script>';
                 if ($_SESSION['nowUser']['user_Role'] == "manager") {
-                    header("Location: ../manager_index.php");
+                    #header("Location: ../manager_index.php");
+                    echo "<script>window.location.href = '../manager_index.php';</script>";
                 } else {
-                    header("Location: ../index.php");
+                    echo "<script>window.location.href = '../index.php';</script>";
                 }
                 exit();
             } else {

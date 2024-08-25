@@ -1,6 +1,5 @@
 <?php
     require_once('../db.php'); 
-    session_start();
 ?>
 <?php
     if (isset($_SESSION["nowUser"]) && !empty($_SESSION["nowUser"])) {
