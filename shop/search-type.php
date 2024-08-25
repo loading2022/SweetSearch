@@ -26,7 +26,6 @@ $searchTypeResultHTML .= "<ul class='dessert-list' id='dessert-list'>";
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $searchTypeResultHTML .= "<li class='dessert'>
-            <img src='".$row['dess_Photo']."' alt=''>
             <h3>" . $row['dess_Name'] . "</h3>
             <p>$" . $row['dess_Price'] . "</p>
         </li>";
