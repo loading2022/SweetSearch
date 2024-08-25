@@ -1,7 +1,4 @@
 <?php
-require_once 'redis_db.php';
-?>
-<?php
     $servername = $_ENV['MYSQL_HOST'];
     $username = $_ENV['MYSQL_USERNAME'];
     $password = $_ENV['MYSQL_PASSWORD'];

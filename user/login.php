@@ -14,7 +14,6 @@
     <div class="wrap">
         <div class="navbar">
             <?php
-            require_once '../redis_db.php';
             if (isset($_SESSION['nowUser']) && $_SESSION['nowUser']['user_Role'] == "manager") {
                 echo "<h1 class='logo'><a href='../manager_index.php'>搜蒐甜點店</a></h1>";
             } else {
@@ -44,7 +43,7 @@
         <?php
 
         require_once('../db.php'); // 引入資料庫連線
-        require_once '../redis_db.php';
+        
         //session_start(); // 啟動 session
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

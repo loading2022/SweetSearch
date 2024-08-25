@@ -12,7 +12,6 @@
     <div class="wrap">
         <div class="navbar">
             <?php
-            require_once '../redis_db.php';
             if (isset($_SESSION['nowUser']) && $_SESSION['nowUser']['user_Role'] == "manager") {
                 echo "<h1 class='logo'><a href='../manager_index.php'>搜蒐甜點店</a></h1>";
             } else {

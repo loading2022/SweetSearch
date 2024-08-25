@@ -1,5 +1,4 @@
 <?php
-require_once '../redis_db.php';
 session_start(); // Start the session
 
 // Check if the user is logged in
