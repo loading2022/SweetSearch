@@ -13,7 +13,6 @@
     }
 ?>
 <?php
-    session_start();
     if(isset($_SESSION['expiretime'])) {
         if($_SESSION['expiretime'] < time()) {
             unset($_SESSION['expiretime']);
