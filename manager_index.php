@@ -2,7 +2,6 @@
 // 載入db.php來連結資料庫
 require_once 'db.php';
 //session_start();
-require_once 'redis_db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
